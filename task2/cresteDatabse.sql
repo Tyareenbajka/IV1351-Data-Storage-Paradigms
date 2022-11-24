@@ -67,7 +67,6 @@ instrumentId int not null REFERENCES instrument(id) ON DELETE CASCADE,
 brand VARCHAR(50) not null,
 available BOOLEAN not null,
 startDate DATE,
-endDate DATE,
 rentalPriceListId int not null REFERENCES rental_price_list(id),
 studentId int REFERENCES student(id) ON DELETE SET NULL);
 
@@ -109,3 +108,10 @@ CREATE TABLE lesson_student
 (lessonId int not null REFERENCES lesson(id),
 studentId int not null REFERENCES student(id),
 CONSTRAINT PK PRIMARY KEY (lessonId, studentId));
+
+CREATE TABLE schedule
+(id int not null PRIMARY KEY auto_increment,
+scheduleDate DATE not NULL,
+timeStart TIMESTAMP not null,
+timeEnd TIMESTAMP not null,
+lessonId int not null REFERENCES lesson(id));

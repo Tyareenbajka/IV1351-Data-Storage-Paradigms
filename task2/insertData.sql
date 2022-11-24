@@ -160,3 +160,29 @@ INSERT INTO lesson_student (lessonId, studentId) VALUES
 	(7, 11),
 	(7, 12),
 	(7, 13);
+	
+INSERT INTO instrument_rental
+(brand, available, startDate, rentalPriceListId, instrumentId, studentId) 
+VALUES
+	("Gibson", TRUE, 2022-10-10, 1, 20),
+	("Harman Professional", TRUE, null, 4, null),
+	("Shure", TRUE, null, 5, null),
+	("Fender Musical Instruments", TRUE, null, 6, null),
+	("Yamaha", TRUE, null, 7, null),
+	("Steinway Musical Instruments", TRUE, 2022-05-18, 2, 18),
+	("Roland", TRUE, 2022-08-21, 3, 17);
+
+INSERT INTO schedule (date, timeStart, timeEnd, lessonId) VALUES
+	(2022-10-01, 08:45, 09:45, 1),
+	(2022-12-06, 08:00, 09:00, 1),
+	(2022-11-12, 12:00, 14:00, 1),
+	(2022-09-14, 10:00, 11:00, 1),
+	(2022-08-01, 09:00, 10:00, 2),
+	(2022-07-03, 08:00, 09:00, 2),
+	(2022-12-05, 10:00, 11:00, 2),
+	(2022-11-11, 08:00, 09:00, 2),
+	(2022-12-18, 08:45, 09:45, 5),
+	(2022-10-01, 10:00, 11:00, 6),
+	(2022-09-06, 08:00, 09:00, 7),
+	(2022-08-10, 15:30, 16:30, 8),
+	(2022-11-11, 10:00, 11:00, 9);
