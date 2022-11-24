@@ -11,8 +11,6 @@
 
 ## After passing the course, the student shall be able to
 
-After passing the course, the student shall be able to:
-
 - describe and explain basic concepts, principles and theories in the area of data/databases/data storage and in information administration and database design
 - model needs for information based on an organisational description and convert the model to a functioning database
 - use relational databases and query languages
