@@ -19,8 +19,12 @@ VALUES
   ("23733851-0","Stewart Gallegos","Ap #127-3156 Netus Road","8331","Vichy","(248) 248-2134","sed.congue@protonmail.com"),
   ("13456183-1","Anthony Riggs","P.O. Box 837, 8289 Aliquam Avenue","72574","Porvenir","1-703-672-5136","commodo.hendrerit.donec@icloud.couk"),
   ("23764755-6","Prescott Willis","276-4481 A St.","94251","Sint-Denijs","(825) 958-8431","odio@icloud.net"),
-  ("50448682-6","Azalia Bennett","P.O. Box 183, 9853 Mus. Av.","593164","Mahikeng","1-861-241-4694","egestas.ligula.nullam@outlook.edu");
-
+  ("50448682-6","Azalia Bennett","P.O. Box 183, 9853 Mus. Av.","593164","Mahikeng","1-861-241-4694","egestas.ligula.nullam@outlook.edu"),
+  ("42377842-3","Noble Daniels","1817 Orci. Street","241863","Thames","1-966-847-9561","ornare@aol.net"),
+  ("46134829-7","Lacey Terrell","P.O. Box 433, 7762 Blandit Av.","396275","Farsund","(768) 278-2246","ac@hotmail.couk"),
+  ("20798615-1","Ina Leonard","Ap #175-5463 Gravida Rd.","799674","Mukachevo","(314) 821-3917","eu.tellus.eu@protonmail.couk"),
+  ("31482969-7","Yoshi Bender","Ap #590-9174 Etiam Av.","3618","Dhule","(143) 768-5680","ornare.elit.elit@google.org");
+  
 INSERT INTO skill_level (skillLevel) VALUES
 	('beginner'),
 	('intermediate'),
@@ -59,6 +63,10 @@ INSERT INTO contact_person (relation, personId) VALUES
 	("brother", 2),
 	("mother", 3),
 	("father", 4),
+	("grandmother", 21),
+	("grandfather", 22),
+	("cousin", 23),
+	("wife", 24),
 	("sister", 5);
 	
 INSERT INTO instructor (employeeNumber, personId) VALUES
@@ -125,6 +133,18 @@ INSERT INTO ensemble_lesson (minPlaces, maxPlaces, lessonId, genreId) VALUES
 INSERT INTO discount (discountPercentage) VALUES
 	(5),
 	(8);
+	
+INSERT INTO student (personId, contactPersonId, skillLevelId, discountId) VALUES
+	(11, 1, 1, null),
+	(12, 2, 2, null),
+	(13, 4, 3, null),
+	(14, 5, 1, null),
+	(15, 6, 1, null),
+	(16, 7, 3, null),
+	(17, 8, 3, null),
+	(18, 9, 2, null),
+	(19, 3, 3, null),
+	(20, 3, 1, null);
 	
 INSERT INTO lesson_student (lessonId, studentId) VALUES
 	(1, 11),

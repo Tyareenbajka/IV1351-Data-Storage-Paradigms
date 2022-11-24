@@ -31,7 +31,7 @@ CREATE TABLE student
 personId int not null REFERENCES person(id),
 contactPersonId int not null REFERENCES contact_person(id),
 skillLevelId int not null REFERENCES skill_level(id),
-discount int REFERENCES discount(id));
+discountId int REFERENCES discount(id));
 
 CREATE TABLE discount
 (id int not null PRIMARY KEY auto_increment,
