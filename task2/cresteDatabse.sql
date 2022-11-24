@@ -112,6 +112,6 @@ CONSTRAINT PK PRIMARY KEY (lessonId, studentId));
 CREATE TABLE schedule
 (id int not null PRIMARY KEY auto_increment,
 scheduleDate DATE not NULL,
-timeStart TIMESTAMP not null,
-timeEnd TIMESTAMP not null,
+timeStart TIME not null,
+timeEnd TIME not null,
 lessonId int not null REFERENCES lesson(id));
