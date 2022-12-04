@@ -31,9 +31,9 @@ SELECT schedule_date, time_start, time_end, genre, ensemble_lesson.max_places AS
 	CASE 
 		WHEN COUNT(lesson_student.lesson_id) = ensemble_lesson.max_places THEN 'Full booked' 
 		WHEN COUNT(lesson_student.lesson_id) = (ensemble_lesson.max_places - 1)  THEN 'One seat left'
-        WHEN COUNT(lesson_student.lesson_id) = (ensemble_lesson.max_places - 2)  THEN 'Two seats left'
-        WHEN COUNT(lesson_student.lesson_id + 3) < (ensemble_lesson.max_places)  THEN 'Many seats left'
-    END AS 'seats  left'
+        	WHEN COUNT(lesson_student.lesson_id) = (ensemble_lesson.max_places - 2)  THEN 'Two seats left'
+        	WHEN COUNT(lesson_student.lesson_id + 3) < (ensemble_lesson.max_places)  THEN 'Many seats left'
+    	END AS 'seats  left'
 FROM schedule JOIN lesson ON lesson_id = lesson.id JOIN lesson_type ON lesson_type.id = lesson.lesson_type JOIN ensemble_lesson ON ensemble_lesson.lesson_id = lesson.id JOIN genre ON genre_id = genre.id JOIN lesson_student ON lesson_student.lesson_id = lesson.id
 WHERE WEEK(schedule_date, 7) =  WEEK(current_date(), 7) + 2
 GROUP BY lesson_student.lesson_id
