@@ -35,10 +35,10 @@ CREATE VIEW student_siblings_view
 AS
 SELECT 
 	DISTINCT COUNT(sibling.student_id) AS 'siblings',
-		CASE 
-			WHEN COUNT(sibling.student_id) = 0 THEN COUNT(person.id)
-			WHEN COUNT(person.id) = COUNT(sibling.student_id) THEN COUNT(person.id) + 1
-		END AS 'students'
+	CASE 
+		WHEN COUNT(sibling.student_id) = 0 THEN COUNT(person.id)
+		WHEN COUNT(person.id) = COUNT(sibling.student_id) THEN COUNT(person.id) + 1
+	END AS 'students'
 FROM sibling RIGHT JOIN student ON student_id = student.id JOIN person ON person_id = person.id 
 	GROUP BY sibling.student_id 
 	ORDER BY sibling.student_id;
