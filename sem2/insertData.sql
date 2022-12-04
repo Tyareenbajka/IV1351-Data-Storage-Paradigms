@@ -1,4 +1,4 @@
-INSERT INTO person (personNumber,name,address,zip,city,phone,email)
+INSERT INTO person (person_number,name,address,zip,city,phone,email)
 VALUES
   ("46155431-8","Cara Mckinney","355-5241 Sed St.","33478","Dublin","054-466-3481","non.sapien.molestie@aol.edu"),
   ("13858611-1","Curran Hahn","P.O. Box 779, 3664 Neque St.","58123","Frederick","002-656-2687","scelerisque.scelerisque.dui@yahoo.edu"),
@@ -25,12 +25,12 @@ VALUES
   ("20798615-1","Ina Leonard","Ap #175-5463 Gravida Rd.","799674","Mukachevo","(314) 821-3917","eu.tellus.eu@protonmail.couk"),
   ("31482969-7","Yoshi Bender","Ap #590-9174 Etiam Av.","3618","Dhule","(143) 768-5680","ornare.elit.elit@google.org");
   
-INSERT INTO skill_level (skillLevel) VALUES
+INSERT INTO skill_level (skill_level) VALUES
 	('beginner'),
 	('intermediate'),
 	('advanced');
 
-INSERT INTO instrument (instrumentType) VALUES
+INSERT INTO instrument (instrument_type) VALUES
 	("Trumpet"),
 	("Drums"),
 	("French Horn"),
@@ -44,21 +44,21 @@ INSERT INTO genre (genre) VALUES
 	("reggae"),
 	("country");	
 	
-INSERT INTO rental_price_list (price, quantity) VALUES
-	(500, 5),
-	(600, 9),
-	(350, 12),
-	(180, 18),
-	(800, 4),
-	(750, 9);
+INSERT INTO rental_price_list (price, quantity, instrument_type) VALUES
+	(500, 5, 1),
+	(600, 9, 2),
+	(350, 12, 3),
+	(180, 18, 4),
+	(800, 4, 5),
+	(750, 9, 6);
 	
-INSERT INTO lesson_price_list (skillLevelPrice)
+INSERT INTO lesson_price_list (skill_level_price, skill_level)
 VALUES
-	(200),
-	(300),
-	(400);
+	(200, 1),
+	(300, 2),
+	(400, 3);
 	
-INSERT INTO contact_person (relation, personId) VALUES
+INSERT INTO contact_person (relation, person_id) VALUES
 	("parent", 1),
 	("brother", 2),
 	("mother", 3),
@@ -69,14 +69,14 @@ INSERT INTO contact_person (relation, personId) VALUES
 	("wife", 24),
 	("sister", 5);
 	
-INSERT INTO instructor (employeeNumber, personId) VALUES
+INSERT INTO instructor (employee_number, person_id) VALUES
 	(32467487, 6),
 	(62790639, 7),
 	(67347142, 8),
 	(21899886, 9),
 	(39276762, 10);
 	
-INSERT INTO instructor_instrument (instrumentId, instructorId) VALUES
+INSERT INTO instructor_instrument (instrument_id, instructor_id) VALUES
 	(1, 1),
 	(2, 2),
 	(3, 3),
@@ -89,7 +89,7 @@ INSERT INTO instructor_instrument (instrumentId, instructorId) VALUES
 	(4, 5),
 	(4, 3);
 	
-INSERT INTO instructor_skill_level (skillLevelId, instructorId) VALUES
+INSERT INTO instructor_skill_level (skill_level_id, instructor_id) VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
@@ -100,41 +100,57 @@ INSERT INTO instructor_skill_level (skillLevelId, instructorId) VALUES
 	(3, 2),
 	(2, 1);
 	
-INSERT INTO sibling (personNumber, studentId) VALUES
-	("23764755-6", 20),
-	("50448682-6", 19);
+INSERT INTO sibling (person_number, student_id) VALUES
+	("23764755-6", 10),
+    ("13456183-1", 10),
+    ("13456183-1", 9),
+	("50448682-6", 9),
+    ("50448682-6", 8),
+    ("23764755-6", 8),
+    ("11657839-5", 7),
+    ("23733851-0", 6);
+    
+insert into lesson_type (lesson_type) VALUES
+	("individual"),
+    ("group"),
+    ("ensemble");
 	
-INSERT INTO lesson (classRoom, instructorId, lessonPriceListId) VALUES
-	("B512", 1, 1),
-	("A724", 2, 2),
-	("A665", 3, 3),
-	("B512", 4, 1),
-	("B471", 5, 2),
-	("A724", 1, 3),
-	("B512", 2, 1),
-	("B512", 3, 2),
-	("A724", 4, 3);
+INSERT INTO lesson (class_room, lesson_type, instructor_id, lesson_price_list_id) VALUES
+	("B512", 3, 1, 1),
+	("A724", 3, 2, 2),
+	("A665", 2, 3, 3),
+	("B512", 2, 4, 1),
+	("B471", 2, 5, 2),
+	("A724", 3, 1, 3),
+	("B512", 3, 2, 1),
+	("B512", 1, 3, 2),
+	("A724", 1, 4, 3),
+    ("B112", 3, 3, 1),
+    ("B212", 3, 3, 2);
 	
-INSERT INTO individual_lesson (appointmentNumber, lessonId, instrumentId) VALUES
+INSERT INTO individual_lesson (appointment_number, lesson_id, instrument_id) VALUES
 	("a802c9", 8, 1),
 	("ccfffe", 9, 2);
 	
-INSERT INTO group_lesson (minPlaces, maxPlaces, lessonId, instrumentId) VALUES
+INSERT INTO group_lesson (min_places, max_places, lesson_id, instrument_id) VALUES
 	(5, 12, 3, 1),
 	(5, 25, 4, 2),
 	(2, 10, 5, 3);
 	
-INSERT INTO ensemble_lesson (minPlaces, maxPlaces, lessonId, genreId) VALUES
+INSERT INTO ensemble_lesson (min_places, max_places, lesson_id, genre_id) VALUES
 	(4, 20, 6, 1),
 	(5, 18, 7, 2),
-	(3, 12, 1, 3),
-	(4, 10, 2, 4);
+	(3, 8, 1, 3),
+    (3, 8, 10, 2),
+	(4, 6, 2, 4),
+    
+    (2, 7, 11, 3);
 	
-INSERT INTO discount (discountPercentage) VALUES
+INSERT INTO discount (discount_percentage) VALUES
 	(5),
 	(8);
 	
-INSERT INTO student (personId, contactPersonId, skillLevelId, discountId) VALUES
+INSERT INTO student (person_id, contact_person_id, skill_level_id, discount_id) VALUES
 	(11, 1, 1, null),
 	(12, 2, 2, null),
 	(13, 4, 3, null),
@@ -146,7 +162,7 @@ INSERT INTO student (personId, contactPersonId, skillLevelId, discountId) VALUES
 	(19, 3, 3, null),
 	(20, 3, 1, null);
 	
-INSERT INTO lesson_student (lessonId, studentId) VALUES
+INSERT INTO lesson_student (lesson_id, student_id) VALUES
 	(1, 11),
 	(1, 12),
 	(1, 13),
@@ -179,10 +195,22 @@ INSERT INTO lesson_student (lessonId, studentId) VALUES
 	(7, 19),
 	(7, 11),
 	(7, 12),
-	(7, 13);
+	(7, 13),
+    (10, 13),
+    (10, 12),
+    (10, 11),
+    (10, 14),
+    (10, 15),
+    (10, 16),
+    (10, 17),
+    (10, 18),
+    
+    (11, 18),
+    (11, 19),
+    (11, 11);
 	
 INSERT INTO instrument_rental
-(brand, available, startDate, rentalPriceListId, instrumentId, studentId) 
+(brand, available, start_date, rental_price_list_id, instrument_id, student_id) 
 VALUES
 	("Gibson", TRUE, '2022-10-10', 1, 1, 15),
 	("Harman Professional", TRUE, null, 4, 2, null),
@@ -192,17 +220,23 @@ VALUES
 	("Steinway Musical Instruments", TRUE, '2022-05-18', 2, 4, 18),
 	("Roland", TRUE, '2022-08-21', 3, 5, 17);
 
-INSERT INTO schedule (scheduleDate, timeStart, timeEnd, lessonId) VALUES
+INSERT INTO schedule (schedule_date, time_start, time_end, lesson_id) VALUES
 	('2022-10-01', "08:45", "09:45", 1),
-	('2022-12-06', "08:00", "09:00", 1),
+	('2022-12-13', "08:00", "09:00", 1),
 	('2022-11-12', "12:00", "14:00", 1),
-	('2022-09-14', "10:00", "11:00", 1),
+	('2022-09-14', "10:00", "11:00", 3),
 	('2022-08-01', "09:00", "10:00", 2),
+	('2022-08-11', "19:00", "10:00", 2),
 	('2022-07-03', "08:00", "09:00", 2),
-	('2022-12-05', "10:00", "11:00", 2),
-	('2022-11-11', "08:00", "09:00", 2),
-	('2022-12-18', "08:45", "09:45", 5),
+	('2022-12-12', "10:00", "11:00", 2),
+	('2022-11-11', "08:00", "09:00", 4),
+	('2022-09-18', "08:45", "09:45", 5),
 	('2022-10-01', "10:00", "11:00", 6),
 	('2022-09-06', "08:00", "09:00", 7),
-	('2022-08-10', "15:30", "16:30", 8),
-	('2022-11-11', "10:00", "11:00", 9);
+	('2022-08-19', "10:30", "11:30", 1),
+    ('2022-08-20', "10:30", "11:30", 8),
+	('2022-11-11', "10:00", "11:00", 9),
+    ('2022-12-15', "11:00", "12:00", 10),
+    ('2021-11-11', "15:15", "16:00", 2),
+    
+    ('2022-12-16', "08:15", "09:00", 11);
