@@ -37,12 +37,13 @@ SELECT
 	DISTINCT COUNT(sibling.student_id) AS 'siblings',
 	CASE 
 		WHEN COUNT(sibling.student_id) = 0 THEN COUNT(person.id)
-		WHEN COUNT(person.id) = COUNT(sibling.student_id) THEN COUNT(person.id) + 1
+		WHEN COUNT(sibling.student_id) = COUNT(sibling.student_id) THEN COUNT(sibling.student_id) + 1
 	END AS 'students'
 FROM sibling RIGHT JOIN student ON student_id = student.id JOIN person ON person_id = person.id 
 	GROUP BY sibling.student_id 
 	ORDER BY sibling.student_id;
-        
+    
+    
 -- List all ensembles held during the next week, sorted by music genre and weekday
 CREATE VIEW ensembles_next_week_schedule_view
 AS
@@ -59,7 +60,7 @@ FROM schedule JOIN lesson ON lesson_id = lesson.id
 	JOIN ensemble_lesson ON ensemble_lesson.lesson_id = lesson.id 
 	JOIN genre ON genre_id = genre.id 
 	JOIN lesson_student ON lesson_student.lesson_id = lesson.id
-WHERE WEEK(schedule_date, 7) =  WEEK(current_date(), 7) + 2
+WHERE WEEK(schedule_date, 7) =  WEEK(current_date(), 7) + 1
 GROUP BY lesson_student.lesson_id
 ORDER BY genre, schedule_date;
 
